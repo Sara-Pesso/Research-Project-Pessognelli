@@ -1,0 +1,97 @@
+
+
+\documentclass[11pt]{article}
+
+\usepackage{sectsty}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{titling}
+\usepackage{lipsum}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\title{Bibliography}
+\author{Sara Pessognelli}
+\date{\today}
+
+\begin{document}
+\maketitle
+\section*{Project Ideas}
+\begin{abstract}
+    In my project I want to explore how modelling, regression, and Bayesian Inference can be used to determine susceptibility of individuals to disease, depending on their health backgrounds. To do this, I plan to use
+    data sets that link certain genetic and health markers (things like familial histories, heart health indicators, vaccination status, etc.). I want to use Bayesian inference and regression models (like naive Bayes classifiers and 
+    Bayesian neural networks) to make accurate predictions about the outcomes of disease.\\\\
+    Secondarily, I also want to explore how disease spreads using branching processes and Poisson processes. Then, I want to see if I can use this epidemiologic spreading information in conjunction with the Bayesian models that predict mortality
+    to see if I can make predictions about the possible size and lethality of certain diseases. As case studies, I plan to use well known epidemics and pandemics, like ebola, COVID-19, HIV, and the Spanish Flu, that have a lot of the necessary modelling information
+    available ($R_0$ values, incubation times, etc.)
+\end{abstract}
+\begin{thebibliography}{100} % 100 is a random guess of the total number of
+    %references
+    \section*{\textbf{Background Sources.}}
+    \bibitem{hackers} Davidson-Pilon, C. (2016). \emph{Bayesian Methods for Hackers: Probabilistic Programming and Bayesian Inference}. Addison-Wesley. 
+    \bibitem{intro_to_mcmc}Andrieu, C., de Freitas, N., Doucet, A. \emph{et al.} (2003). An Introduction to MCMC for Machine Learning. \emph{Machine Learning} 50, 5–43.  \url{https://doi.org/10.1023/A:1020281327116}
+    \bibitem{Poisson_Process}Tse, K. (2014) Some Applications of the Poisson Process. \emph{Applied Mathematics},05,3011-3017. DOI:  \url{10.4236/am.2014.519288}.
+    \bibitem{GIP} Gut, A. (2009). \emph{An Intermediate Course in Probability}. Springer. [DOI] \url{10.1007/9781-4419-0162-0}
+
+    \section*{\textbf{Disease Mapping Specific Sources.}}
+    \bibitem{heart_Disease}Lupague, R. M.J.M., Mabborang, R. C., Bansil, A. G., \& Lapague, M. M. (2023). Integrated Machine Learning Model For Comprehensive Heart Disease Risk Assessment Based On Multi-Dimensional Health Factors. 
+    \emph{European Journal of Computer Science and Information Technology}, 11(3), 44-58. \url{https://doi.org/10.37745/ejcsit.2013/vol11n34458}
+    \bibitem{bayesian_contagion}Coly, S., Garrido, M., Abrial, D., \& Yao, A. (2021).
+    Bayesian hierarchical models for disease mapping applied to contagious pathologies. \emph{PLoS ONE}, 16(1): e0222898. \url{https://doi.org/10.1371/journal.pone.0222898}
+    \bibitem{iowa} Jarad Niemi, Ph.D. (2013, Jan 22). Bayesian inference for Poisson data [Video]. YouTube. [URL] \url{https://www.youtube.com/watch?v=lNrpPNk6InU}
+
+    \section*{\textbf{Disease Specific Research.}}
+    \subsection*{COVID-19.}
+    \bibitem{ebola_r0_liu} Liu, Y., Gayle, A. A., Wilder-Smith, A. \& Rocklov, J. (2020).The reproductive number of COVID-19 is higher
+    compared to SARS coronavirus. Journal of Travel Medicine, 1-4. \url{10.1093/jtm/taaa021}
+    \bibitem{isolation_period} Centers for Disease Control and Prevention. (2023, May 11). Isolation and Precautions for People with COVID-19. COVID-19. [URL] \url{https://www.cdc.gov/coronavirus/2019-ncov/your-health/isolation.html#:~:text=If%20you%20test%20positive%20for,at%20home%20and%20in%20public.}
+    \bibitem{transmissibility} Manathunga, S. S., Abeyagunawardena, I. A., \& Dharmaratne, S. D. (2023). A comparison of transmissibility of SARS-CoV-2 variants of concern. Virology Journal, 20(59). \url{https://doi.org/10.1186/s12985-023-02018-x}
+    \bibitem{Re_R0} Achaiah, N. C., Subbarajasetty, S. B., \& Shetty, R. M. (2020). R0 and Re of COVID-19: Can We Predict When the Pandemic Outbreak will be Contained?. Indian Jounrla of Critical Care Medicine, 24(11), 1125-1127. \url{10.5005/jp-journals-10071-23649}
+    \bibitem{ne} Netherlands Ministry of Health. (2023, June 11). Reproduction Number. Coronavirus Dashboard. [URL] \url{https://coronadashboard.government.nl/landelijk/reproductiegetal}
+    \bibitem{serial_int} Ryu, S., Kim, D.,  Ali, S. T., \& Cowling, B. J. (2022). Serial Interval and Transmission
+    Dynamics during SARS-CoV-2 Delta
+    Variant Predominance, South Korea. Emergine Infectious Diseases (CDC), 28(2), 407-410. \url{10.3201/eid2802.211774}
+    \bibitem{PA_timeline} A Year of COVID in Pennsylvania. (2021). ABC 27 WHTM. Retrieved November 06, 2023, from \url{https://www.abc27.com/timeline-of-a-year-of-covid-19-in-pennsylvania/}
+    \bibitem{CA_timeline} Procter, R. (2021, March 04). Remember when? Timeline marks key events in California’s year-long pandemic grind. Cal Matters, [URL] \url{https://calmatters.org/health/coronavirus/2021/03/timeline-california-pandemic-year-key-points/.}
+    
+    \subsection*{Ebola}
+    \bibitem{ebola_r0} Kerkhove, M. D. V., Bento, A. I., Ferguson, N. M., \& Donnelly, C. A. (2015). A review of epidemiological parameters from Ebola outbreaks to inform early public health decision-making. Scientific Data, 2. https://doi.org/10.1038/sdata.2015.19
+    \bibitem{ebola_cdc} Centers for Disease Control and Prevention. (2019, March 18). 2014-2016 Ebola Outbreak in West Africa. CDC. [URL] \url{https://www.cdc.gov/vhf/ebola/history/2014-2016-outbreak/index.html}
+    \bibitem{ebola_who} World Health Organization. (2015, January). Factors that contributed to undetected spread of the Ebola virus and impeded rapid containment. WHO. [URL] \url{https://www.who.int/news-room/spotlight/one-year-into-the-ebola-epidemic/factors-that-contributed-to-undetected-spread-of-the-ebola-virus-and-impeded-rapid-containment}
+    \bibitem{ebola_DeathTime} Johns Hopkins Medicine. Ebola. Health. [URL] \url{https://www.hopkinsmedicine.org/health/conditions-and-diseases/ebola#:~:text=If%20treatment%20is%20ineffective%20or,from%20the%20start%20of%20symptoms.}
+
+    \section*{\textbf{Datasets.}}
+    \bibitem{covid_mex} Ministry of Health, Government of Mexico (2020). 
+    Information regarding COVID-19 cases in Mexico [Data set]. Salud. [URL] \url{https://datos.gob.mx/busca/dataset/informacion-referente-a-casos-covid-19-en-mexico}
+    \bibitem{jhu_covid} Center for Systems Science and Engineering (CSSE) at JOhns Hopkins (2023). 
+    Novel Coronavirus (COVID-19) Cases [Data set]. CSSE Johns Hopkins. [URL] \url{https://github.com/CSSEGISandData/COVID-19}
+    \bibitem{cdc_brfss} Centers for Disease Control and Prevention (2021). Behavioral Risk Factor Analysis Surveillance System Data [Data set]. CDC. [URL] \url{https://www.cdc.gov/brfss/annual_data/annual_2021.html}
+    \bibitem{ebola_data} Centers for Disease Control and Prevention (2019). 2014 Ebola Outbreak in West Africa Epidemic Curves [Data set]. CDC. [URL] \url{https://www.cdc.gov/vhf/ebola/history/2014-2016-outbreak/cumulative-cases-graphs.html?CDC_AA_refVal=https%3A%2F%2Fwww.cdc.gov%2Fvhf%2Febola%2Foutbreaks%2F2014-west-africa%2Fcumulative-cases-graphs.html.}
+    \bibitem{ebola_total1} World Health Organization (2016). Ebola data and statistics  [Data set]. WHO. [URL] \url{https://apps.who.int/gho/data/node.ebola-sitrep.quick-downloads?lang=en}
+    \bibitem{ebola_total2} Centers for Disease Control and Prevention (2020). Case Counts [Data set]. CDC. [URL] \url{https://www.cdc.gov/vhf/ebola/history/2014-2016-outbreak/case-counts.html.}
+    \bibitem{h1n1_data} Centers for Disease Control and Prevention (2014). CDC Estimates of 2009 H1N1 Influenza Cases, Hospitalizations and Deaths in the United States [Data set]. CDC. [URL] \url{https://www.cdc.gov/h1n1flu/estimates_2009_h1n1.htm.}
+    
+    \section*{\textbf{Epidemiology.}}
+    \subsection*{SIR Models.}
+    \bibitem{sir1} Smith, D. \& Moore, L. (2004, December).\emph{"The SIR Model for Spread of Disease - The Differential Equation Model"}. The Mathematical Association of America. \url{https://maa.org/press/periodicals/loci/joma/the-sir-model-for-spread-of-disease-the-differential-equation-model}
+    \bibitem{sir2} Cooper, I., Mondal, A., \& Antonopoulos, C. (2020). A SIR model assumption for the spread of COVID-19 in different communities. \emph{Chaos, Solitons, \& Fractals}, 139. DOI: \url{https://doi.org/10.1016/j.chaos.2020.110057}. URL: \url{https://www.sciencedirect.com/science/article/pii/S0960077920304549?via%3Dihub}
+
+    \subsection*{Branching Models.}
+    \bibitem{BP_Epidemiology} Jacob, C. (2010). Branching Proceseses: Their Role in Epidemiology. \emph{International Journal of Environmental Research and Public Health}, 7(3), 1186-1204. DOI: \url{10.3390/ijerph7031204}
+    \bibitem{BP_theory} Bartoszynski, R. (1965). Branching Processes and the Theory of Epidemics. \emph{Berkeley Symposium on Mathematical Statistics \& Probability}, 4, 259-269. [URL] \url{https://digicoll.lib.berkeley.edu/record/113134}
+    \bibitem{bp_covid} Laha A. K., \& Majumdar, S. (2022). 
+    A multi-type branching process model for epidemics with application to COVID-19.
+    \emph{Stochastic Environmental Research and Risk Assessment}, 4, 259-269. 
+    DOI: \url{https://doi.org/10.1007/s00477-022-02298-9}
+    \bibitem{sir3} Ahlberg, D. (2021, May 20). Epidemics and branching processes [Lecture notes]. Stockholm University. URL: \url{https://staff.math.su.se/daniel.ahlberg/notes-epidemics.pdf}
+    \bibitem{sir4} Cooper, I., Mondal, A., \& Antonopoulos, C. G. (2020). Title of article. A SIR model assumption for the spread of COVID-19 in different communities, 139. \url{ 10.1016/j.chaos.2020.110057}
+
+\end{thebibliography}
+
+\end{document}
