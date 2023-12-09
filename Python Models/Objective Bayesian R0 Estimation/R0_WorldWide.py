@@ -1,3 +1,10 @@
+## Bayesian Parameter Estimation of R0 (=Lambda) World Wide during COVID-19
+####################################################################################################################################################################################
+## User Inputs:
+file = 'day_wise.csv'
+####################################################################################################################################################################################
+####################################################################################################################################################################################
+
 import os
 dir = os.path.dirname(os.path.realpath(__file__))
 os.chdir(dir)
@@ -10,7 +17,7 @@ from math import *
 
 ## Import COVID-19 Data (day_waise.csv-- world wide infection tracker)
 import pandas as pd
-df = pd.read_csv(r'E:\Research Project\Python Models\COVID19_Data_2020\day_wise.csv')
+df = pd.read_csv(file)
 
 ### Paramter Estimation Using Baye's Theorem 
 ## We need to determine how many "offspring" (i.e., infectees) each infected person has from one generation the the next.
@@ -25,13 +32,9 @@ Tn = Tn[0::generation_time]
 
 Xn = [Tn[i]- Tn[i-1] for i in range(1,len(Tn))]
 Xn.insert(0, Tn[0])
-print(Xn)
 
 n = [i for i in range(4,len(Xn)+3)] ## the 4 and 3 represent the fact that 1/22/2022 was not gen. n=1
 yn_1 = [Xn[i]**(1/n[i]) for i in range(len(n))]
-
-# print(sum(yn_1))
-# print(len(yn_1))
 
 sum_yi = sum(yn_1)
 n = len(yn_1)

@@ -1,15 +1,35 @@
-s0 = 8*10**9
-i0 = 1
-r0 = 0
+### SIR Model Example
+# The SIR model is a simple ODE model used for predicting the spread of disease in the later stages of an outbreak.
+# This particular example uses Berks County, PA, but the inputs can be adjusted for any county/country data of suitable form.
+##############################################################################################################################################################################
+# User Inputs:
+total_population = 421017 # Population of Berks County, PA in 2020
+peak_infected = 5044 # Max number of infected at one time in Berks
+b = 0.178 # SIR parameters
+k = 0.015
+generation_time = 5 # 5 days is accepted infectious period of COVID 19
+total_time = 250 #simulation time
+##############################################################################################################################################################################
+##############################################################################################################################################################################
 
-total_time = 250
+import matplotlib.pyplot as plt
+import pandas as pd
+import os
+dir = os.path.dirname(os.path.realpath(__file__))
+os.chdir(dir)
+
+df = pd.read_csv('Berks.csv')
+
+s0 = total_population
+i0 = peak_infected/(7.4*(10**5))
+r0 = i0
+
 time_step = 1 
 
 st = [s0/s0]
 it = [i0/s0]
 rt = [r0/s0]
-b = 0.2
-k = 0.04
+
 ## Traditional SIR Model
 
 for time in range(0, total_time, time_step):
@@ -30,14 +50,13 @@ for time in range(0, total_time, time_step):
 
 ## Quick Plot 
 times = [t for t in range(0, total_time+time_step, time_step)]
+print(it[1])
 
-import matplotlib.pyplot as plt 
-import pandas as pd
-df = pd.read_csv(r'E:\Research Project\Python Models\COVID19_Data_2020\World Wide.csv')
 
-total_confirmed = list(df['Confirmed']) 
+## Add a new column: New Confirmed Cases and New Deaths (these will represent X(1), X(2),..., X(n))
+total_confirmed = list(df['Confirmed']) # The data from the CDC is strictly the total (Tn) number of conformed cases
 Tn = list(df['Confirmed'])
-generation_time = 5
+
 Tn = Tn[0::generation_time]
 
 Tn = [t/s0 for t in Tn]
@@ -48,34 +67,6 @@ plt.plot(times, it, label = "I(t)")
 plt.plot(times, rt, label = "R(t)") 
 plt.title("Example SIR Data")
 plt.xlabel("Time (n)")
-plt.ylabel("Proportion")
+plt.ylabel("Proportion of Total Population")
 plt.legend() 
 plt.show()
-
-# print(st[1], it[1], rt[1])
-
-### SIR as a Probabilistic Model for the early stages of a epidemic/ pandemic. 
-## https://staff.math.su.se/daniel.ahlberg/notes-epidemics.pdf
-N = 320000000 # Roughly the population of the US
-St = [N-1] #susceptible
-It = [1] # Infected
-Rt = [0] # recovered
-
-from scipy.stats import expon, poisson
-import numpy as np
-lambda_ = 0.5 # rate-- the average number of occurences, per unit time, for which infection occurs. 
-
-gamma = 0.2 ## GUESS: 5 (gamma = 1/5) infectious interactions per day
-t_interaction = expon.rvs(scale = 1/gamma, size = 10000) #probabilistic variable. 
-mean_interactions = np.mean(t_interaction)
-Y = np.random.poisson(lam = lambda_*mean_interactions, size = 10000) # Number of infectious contacts of arbitrary infected individual
-print (np.mean(Y))
-# #Where t_interaction if the lenght of the interaction
-# T = #interval an individual remains infectious
-# #Therefore
-# R0 = EY = E[E(Y|T)] = E[lambda_T] = lambda_/gamma #R0 = the reproductive number
-# ## Remains accurate as long as the number of infectious contacts (Y) < sqrt(N)
-# $$$ I would like to use this in the deterministic version of this model. 
-
-
-
