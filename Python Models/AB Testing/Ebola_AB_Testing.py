@@ -14,7 +14,7 @@ os.chdir(dir)
 ## Import COVID-19 Data (USA-- by county, beginning 1/22/2020)
 import pandas as pd
 county = "Ebola"
-df = pd.read_csv(r"E:\Research Project\Python Models\Ebola_2016_WestAfrica\case_counts_ebola2016.csv")
+df = pd.read_csv(r"case_counts_ebola2016.csv")
 
 ## Add a new column: New Confirmed Cases and New Deaths (these will represent X(1), X(2),..., X(n))
 total_confirmed = list(df['Confirmed']) # The data from the CDC is strictly the total (Tn) number of conformed cases

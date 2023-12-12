@@ -9,10 +9,10 @@ import pandas as pd
 from math import *
 
 ## Import COVID-19 Data (USA-- by county, beginning 1/22/2020)
-berks_df = pd.read_csv(r'E:\Research Project\Python Models\COVID19_Data_2020\Berks.csv')
-LA_df = pd.read_csv(r'E:\Research Project\Python Models\COVID19_Data_2020\LosAngeles.csv')
-NYC_df = pd.read_csv(r'E:\Research Project\Python Models\COVID19_Data_2020\Manhattan.csv')
-Philly_df = pd.read_csv(r'E:\Research Project\Python Models\COVID19_Data_2020\Philadelphia.csv')
+berks_df = pd.read_csv(r'Berks.csv')
+LA_df = pd.read_csv(r'LosAngeles.csv')
+NYC_df = pd.read_csv(r'Manhattan.csv')
+Philly_df = pd.read_csv(r'Philadelphia.csv')
 
 ## Tn = Total Number of Cases, by day
 def gen0_finder(Tn):
@@ -37,11 +37,17 @@ Philly_Tn = list(Philly_df['Confirmed'])
 Philly_Tn = gen0_finder(Philly_Tn)
 
 ## check
-# plt.plot(range(len(list(berks_df["Confirmed"]))),list(berks_df["Confirmed"]))
+plt.plot(range(len(list(berks_df["Confirmed"]))),list(berks_df["Confirmed"]))
+plt.show()
 
-# plt.plot(range(len(list(berks_df["Confirmed"]))),list(LA_df["Confirmed"]))
-# plt.plot(range(len(list(berks_df["Confirmed"]))),list(NYC_df["Confirmed"]))
-# plt.plot(range(len(list(berks_df["Confirmed"]))),list(Philly_df["Confirmed"]))
+plt.plot(range(len(list(berks_df["Confirmed"]))),list(LA_df["Confirmed"]))
+plt.show()
+
+plt.plot(range(len(list(berks_df["Confirmed"]))),list(NYC_df["Confirmed"]))
+plt.show()
+
+plt.plot(range(len(list(berks_df["Confirmed"]))),list(Philly_df["Confirmed"]))
+plt.show()
 ###
 generation_time = 5
 generation_time = floor(generation_time)
@@ -74,8 +80,8 @@ plt.title("New Cases in Major Cities, by generation")
 plt.xlabel("Generation")
 plt.ylabel("Number of New Cases")
 plt.legend(["Los Angeles", "Manhattan", "Philadelphia"])
-# plt.show()
-plt.savefig("newcases_cities.png")
+plt.show()
+# plt.savefig("newcases_cities.png")
 
 ## Berks county, PA
 plt.close()
@@ -85,8 +91,8 @@ plt.scatter(berks_gens, berks_Xn)
 plt.title("Berks, PA")
 plt.xlabel("Generation")
 plt.ylabel("Number of New Cases")
-# plt.legend(["Berks, PA"])
-# plt.show()
+plt.legend(["Berks, PA"])
+plt.show()
 # plt.savefig("newcases_berks.png")
 
 ## Philly
@@ -96,7 +102,7 @@ plt.title("Philadelphia")
 plt.xlabel("Generation")
 plt.ylabel("Number of New Cases")
 # plt.legend(["Philadelphia"])
-# plt.show()
+plt.show()
 # plt.savefig("newcases_philly.png")
 
 ## NYC
@@ -106,7 +112,7 @@ plt.title("Manhattan")
 plt.xlabel("Generation")
 plt.ylabel("Number of New Cases")
 # plt.legend(["Manhattan"])
-# plt.show()
+plt.show()
 # plt.savefig("newcases_nyc.png")
 
 ## LA

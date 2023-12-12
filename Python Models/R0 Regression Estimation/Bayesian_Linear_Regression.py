@@ -14,7 +14,7 @@ import arviz as az
 import pandas as pd
 
 county = "LosAngeles"
-df = pd.read_csv(r'E:\Research Project\Python Models\COVID19_Data_2020\%s.csv' % county)
+df = pd.read_csv(r'%s.csv' % county)
 
 ## Add a new column: New Confirmed Cases and New Deaths (these will represent X(1), X(2),..., X(n))
 total_confirmed = list(df['Confirmed']) # The data from the CDC is strictly the total (Tn) number of conformed cases

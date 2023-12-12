@@ -10,7 +10,7 @@ dir = os.path.dirname(os.path.realpath(__file__))
 os.chdir(dir)
 ## Import COVID-19 Data (USA-- by county, beginning 1/22/2020)
 import pandas as pd
-file = r'E:\Research Project\Python Models\COVID19_Data_2020\World Wide.csv'
+file = r'World Wide.csv'
 df = pd.read_csv(file)
 county = file.split("\\")[-1]
 county = county.split(".")[0]

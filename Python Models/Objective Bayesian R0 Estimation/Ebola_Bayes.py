@@ -1,4 +1,4 @@
-## R0 Regression Estimation of R0 (=Lambda) for Ebola in West Africa 2014-2016
+## Baye's Parameter Estimation
 ####################################################################################################################################################################################
 ## User Inputs:
 file = 'case_counts_ebola2016.csv'
@@ -64,56 +64,34 @@ Tn = Tn[0::generation_time]
 Xn = [Tn[i]- Tn[i-1] for i in range(1,len(Tn))]
 Xn.insert(0, Tn[0])
 
-### Regression
-LnXn = list(np.log(Xn))
-day = list(np.linspace(1, len(LnXn), num = len(LnXn), endpoint = True))
+n = [i for i in range(initial_generation,len(Xn)+initial_generation-1)] ## the 4 and 3 represent the fact that 1/22/2022 was not gen. n=1 (?)
+n_copy = n.copy()
+yn_1 = [Xn[i]**(1/n[i]) for i in range(len(n))]
 
-i = 0
-while i < len(LnXn):
-    if LnXn[i] == -inf:
-        del LnXn[i]
-        del day[i]
-    else:
-        i+=1  
+sum_yi = sum(yn_1)
+n = len(yn_1)
 
+alpha = 1
+beta = 1
+print("Expected Value = R0:", (alpha+sum_yi)/(n+beta))
 
-#Plot Xn vs n
-gen1 = 0
-gen2 = -1
-day = day[gen1:gen2]
-LnXn = LnXn[gen1:gen2]
-plt.scatter(day, LnXn)
-
-## Best Linear Predictor (Theorem 2.5.2 in GIP)
-## L(X) = alpha + beta*X
-x_bar = np.mean(day)
-y_bar = np.mean(LnXn)
-var_x = np.var(day)
-var_y = np.var(LnXn)
-cov_xy = np.cov(day, LnXn)[0][1]
-
-alpha = y_bar - (cov_xy/var_x)*x_bar
-beta = cov_xy/var_x
-
-## and thus our BLP is
-def BLP(x):
-    return y_bar + (cov_xy/var_x)*(x - x_bar)
-
-## Print the estimated R0
-slope_m = cov_xy/var_x
-R0_hat = exp(slope_m)
-
-print(len(LnXn))
-print("Estimated R0:", R0_hat)
-
-# Plot the BLP line !
-plt.plot(day, BLP(day), label = "R0 = %s" % R0_hat)
-plt.xlabel("Generation, n")
-plt.ylabel("ln(Xn)")
-plt.title("Linearized Regression: %s" % 'Ebola')
-plt.legend(loc = "lower right")
+plot_y =  []
+plot_n = []
+plot_xn = []
+for i in range(1, len(yn_1)):
+    if yn_1[i] != 0:
+        plot_y.append(yn_1[i])
+        plot_n.append(n_copy[i])
+        plot_xn.append(Xn[i])
+plt.scatter(plot_n, plot_y)
+# plt.plot(range(0,len(Tn)), list(Tn))
+plt.xlabel("Generation (n = 10 days)")
+plt.ylabel("Estimate of R0")
+plt.title("Estimates of R0: Initial Reported Generation = 10 (WHO dataset)")
 plt.show()
 
-
-
-
+plt.scatter(plot_n,plot_xn)
+plt.xlabel("Generation (n = 10 days)")
+plt.ylabel("Newly Reported Cases (WHO)")
+plt.title("Xn: Newly Reported Ebola Cases W. Africa, 2014-16 (WHO)")
+plt.show()
