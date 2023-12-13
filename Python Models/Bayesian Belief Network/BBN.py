@@ -31,17 +31,17 @@ df_bloodpressure = pd.DataFrame({'High Blood Pressure':[1  if float(bp) >= 130 e
 data = pd.concat([df_ChestPain, df_abnormalECG, df_cholesterol, df_bloodpressure, resp], ignore_index=False, axis = 1)
 # data = pd.concat([df_cholesterol, df_bloodpressure, resp], ignore_index=False, axis = 1)
 
-scorer = 'bic'
+scorer = 'k2'
 model = BayesianModel([('Chest Pain', 'Abnormal ECG'),('High Cholesterol', 'Chest Pain'),('High Cholesterol', 'HeartDisease'), ('High Cholesterol', 'High Blood Pressure'), ('High Blood Pressure', 'HeartDisease')])
 print("Proposed DAG score:", structure_score(model, data, scoring_method=scorer))
 # model = BayesianModel([('High Cholesterol', 'High Blood Pressure'), ('High Blood Pressure', 'HeartDisease'), ('High Cholesterol', 'HeartDisease')])
 
-# model.fit(data, estimator=BayesianEstimator, prior_type="BDeu") # default equivalent_sample_size=5
-# for cpd in model.get_cpds():
-#     print(cpd)
+model.fit(data, estimator=BayesianEstimator, prior_type="BDeu") # default equivalent_sample_size=5
+for cpd in model.get_cpds():
+    print(cpd)
 
-# print("High Blood Pressure(0) = ", sum(df_bloodpressure["High Blood Pressure"] == 0)/len(list(df_bloodpressure["High Blood Pressure"])))
-# print("High Blood Pressure(1) = ", sum(df_bloodpressure["High Blood Pressure"] == 1)/len(list(df_bloodpressure["High Blood Pressure"])))
+print("High Blood Pressure(0) = ", sum(df_bloodpressure["High Blood Pressure"] == 0)/len(list(df_bloodpressure["High Blood Pressure"])))
+print("High Blood Pressure(1) = ", sum(df_bloodpressure["High Blood Pressure"] == 1)/len(list(df_bloodpressure["High Blood Pressure"])))
 
 bic = BicScore(data)
 es = ExhaustiveSearch(data, scoring_method=bic)
